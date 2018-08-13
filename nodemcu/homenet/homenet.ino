@@ -1,5 +1,10 @@
+
+
 #include <ESP8266WiFi.h>
 #include <WiFiUdp.h>
+#include <DNSServer.h> 
+#include <ESP8266WebServer.h>
+#include <WiFiManager.h>
 
 const char* ssid = "tardis";
 const char* password = "1234567890";
@@ -12,17 +17,14 @@ unsigned long lastTimestamp = 0;
 WiFiUDP udp;
 
 void setup() {
+  WiFiManager wifiManager;
   Serial.begin(38400);
-  WiFi.begin(ssid, password);
+  wifiManager.autoConnect();
 
   while ( WiFi.status() != WL_CONNECTED) {
     Serial.print(".");
     delay(500);
   }
-  Serial.println("[setup] WiFi connected");
-  Serial.print("[setup] IP address: ");
-  Serial.println(WiFi.localIP());
-
   udp.begin(udp_port);
   server_ip = findServer();
   setupPins();
