@@ -1,0 +1,16 @@
+{
+  "name": "home_control",
+  "version": "1.0.0",
+  "description": "Controller for nodemcu and google home",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^6.0.0",
+    "nedb": "^1.8.0",
+    "quick-local-ip": "^1.0.7"
+  }
+}
