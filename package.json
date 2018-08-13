@@ -1,16 +1,32 @@
 {
-  "name": "home_control",
+  "name": "homenet",
   "version": "1.0.0",
   "description": "Controller for nodemcu and google home",
-  "main": "server.js",
+  "main": "lib/homenet.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
-  "author": "",
+  "author": "Davin Thompson <dthompso99@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^6.0.0",
     "nedb": "^1.8.0",
     "quick-local-ip": "^1.0.7"
-  }
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dthompso99/homenet.git"
+  },
+  "keywords": [
+    "nodemcu"
+  ],
+  "bugs": {
+    "url": "https://github.com/dthompso99/homenet/issues"
+  },
+  "homepage": "https://github.com/dthompso99/homenet#readme"
 }
