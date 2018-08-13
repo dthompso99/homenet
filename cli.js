@@ -13,18 +13,18 @@ rl.on('line', function(line) {
     if (line === "exit") rl.close();
     var tkn = line.split(" ");
     switch (tkn[0]){
-    	case 'devices':
-    		console.log("Registered Devices: ", net.getDevices());
+    	case 'boards':
+    		console.log("Registered Boards: ", net.getBoards());
     		break;
-    	case 'device':
-    		if (d = net.getDevice(tkn[1])){
+    	case 'board':
+    		if (d = net.getBoard(tkn[1])){
     			switch(tkn[2]){
     			case 'pinmode':
     				d.setPinMode(parseInt(tkn[3],10), parseInt(tkn[4],10));
     				break;
     			case 'data':
     				d.getData((d)=>{
-        				console.log('Saved Device Data: ', d);
+        				console.log('Saved Board Data: ', d);
     				});
     				break;
     			case 'reboot':
@@ -37,7 +37,7 @@ rl.on('line', function(line) {
     				d.setPinState(parseInt(tkn[3], 10), parseInt(tkn[4],10));
     				break;
     			default:
-    				console.log('Unknown device command', line);
+    				console.log('Unknown board command', line);
     			}
     		}
     		break;

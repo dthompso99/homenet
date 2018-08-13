@@ -2,12 +2,10 @@
 
 #include <ESP8266WiFi.h>
 #include <WiFiUdp.h>
-#include <DNSServer.h> 
+#include <DNSServer.h>
 #include <ESP8266WebServer.h>
 #include <WiFiManager.h>
 
-const char* ssid = "tardis";
-const char* password = "1234567890";
 unsigned int udp_port = 2311;
 char incomingPacket[255];
 IPAddress server_ip;
@@ -58,7 +56,7 @@ void readUdp() {
       } else {
         Serial.println("Pin is not configured for output");
       }
-    } else if (getValue(incomingPacket, '|', 0) == "a^reboot"){
+    } else if (getValue(incomingPacket, '|', 0) == "a^reboot") {
       ESP.reset();
     }
   }
@@ -114,8 +112,8 @@ IPAddress findServer() {
   return broadcastIp;
 }
 
-void reRegister(){
-  
+void reRegister() {
+
 }
 
 void setupPins() {
@@ -210,11 +208,11 @@ void loop() {
   }
   //check for input
   readUdp();
-
-  if (now - lastTimestamp >= 300000){
+  unsigned long diff = now - lastTimestamp;
+  if (abs(diff) >= 300000) {
     lastTimestamp = now;
     IPAddress old_server_ip = server_ip;
-    if (findServer() != server_ip){
+    if (findServer() != server_ip) {
       ESP.reset();
     }
   }
