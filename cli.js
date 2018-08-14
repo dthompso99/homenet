@@ -16,6 +16,30 @@ rl.on('line', function(line) {
     	case 'boards':
     		console.log("Registered Boards: ", net.getBoards());
     		break;
+    	case 'device':
+    		switch(tkn[1]){
+    			case 'create':
+    				let d;
+    				if (d = net.createDevice(tkn[2])){
+    					console.log('created device: ', d);
+    				} else {
+    					console.error('error creating device');
+    				}
+    				break;
+    			case 'list':
+    				console.log('Device Listing: ', net.listDevices());
+    				break;
+    			default:
+    				let di = net.getDevice(tkn[1]);
+	    			switch(tkn[2]){
+	    				default:
+	    					console.error("Unknown Device Sub-Command");
+	    					break;
+	    			}
+    				console.error('Unknown Device Command');
+    				break;
+    		}
+    		break;
     	case 'board':
     		if (d = net.getBoard(tkn[1])){
     			switch(tkn[2]){
@@ -26,6 +50,9 @@ rl.on('line', function(line) {
     				d.getData((d)=>{
         				console.log('Saved Board Data: ', d);
     				});
+    				break;
+    			case 'name':
+    				d.setName(tkn[3]);
     				break;
     			case 'reboot':
     				d.reboot();
