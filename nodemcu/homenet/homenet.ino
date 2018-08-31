@@ -79,7 +79,6 @@ IPAddress findServer() {
   udp.print("|analog^");
   udp.print(NUM_ANALOG_INPUTS);
   udp.endPacket();
-  delay(100);
   while (!found) {
     int packetSize = udp.parsePacket();
     if (packetSize) {
@@ -100,7 +99,6 @@ IPAddress findServer() {
             int amode = getValue(chunk, '^', 1).toInt();
             pinModes[apin] = amode;
           }
-          delay(100);
           return parseIP(serverStr);
         }
         found = true;
