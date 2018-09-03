@@ -80,6 +80,29 @@ rl.on('line', function(line) {
 	    	case 'exit':
 	    		rl.close();
 	    		break;
+	    	case 'pinout':
+	    		console.log("A00--A00 ---------- D00--16");
+	    		console.log("RRR--RRR ---------- D01--05");
+	    		console.log("RRR--RRR ---------- D02--04");
+	    		console.log("D10--3DS ---------- D03--00");
+	    		console.log("D09--2DS ---------- D04--02");
+	    		console.log("MOSi-1DS ---------- 3.3V");
+	    		console.log("CS --CMD ---------- GND");
+	    		console.log("MISO-0DS ---------- D05--14");
+	    		console.log("CLK--CLK ---------- D06--12");
+	    		console.log("GND      ---------- D07--13");
+	    		console.log("3.3V     ---------- D08--15");
+	    		console.log("EN       ---------- RX --03");
+	    		console.log("RST      ---------- TX --01");
+	    		console.log("GND      ---------- GND");
+	    		console.log("VIN      ---------- 3.3V");
+
+
+
+
+
+
+	    		break;
 	    	default:
 	    		console.log('Unknown Command: ', line);
 	    }
